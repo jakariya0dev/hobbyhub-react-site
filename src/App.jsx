@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/common/Navbar.jsx";
 import {Outlet} from "react-router";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/common/Footer.jsx";
+import Sliders from "./components/common/Sliders.jsx";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <Navbar/>
+      <Sliders/>
         <Outlet/>
         <Footer/>
     </>

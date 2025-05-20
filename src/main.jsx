@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App.jsx";
 import "./index.css";
-import GroupsDashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import GroupsAll from "./pages/GroupAll.jsx";
 import GroupCreate from "./pages/GroupCreate.jsx";
@@ -12,6 +12,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
+import PrivateRoute from "./providers/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <GroupsDashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:3000/groups"),
       },
       {

@@ -4,9 +4,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import LoaderBar from "../components/common/LoaderBar.jsx";
 import app from "./../../config.firebase.js";
@@ -17,6 +17,13 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (user && location.pathname === "/login") {
+      navigate(location.state ? location.state : "/");
+    }
+  }, [user, navigate, location.pathname, location.state]);
 
   const handleLogin = (e) => {
     setIsLoading(true);
@@ -63,10 +70,6 @@ const Login = () => {
 
   if (isLoading) {
     return <LoaderBar />;
-  }
-
-  if (user) {
-    navigate("/");
   }
 
   return (

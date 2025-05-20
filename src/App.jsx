@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from "./components/common/Navbar.jsx";
 import {Outlet} from "react-router";
 import Footer from "./components/common/Footer.jsx";
+import {ToastContainer} from "react-toastify";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Navbar/>
         <Outlet/>
         <Footer/>
+        <ToastContainer />
     </>
   )
 }

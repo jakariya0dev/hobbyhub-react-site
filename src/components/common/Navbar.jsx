@@ -1,5 +1,11 @@
-import React from 'react';
+import React, {use} from 'react';
 import {Link} from "react-router";
+import {AuthContext} from "./../../providers/AuthProvider.jsx";
+import LoaderDotted from "./LoaderDotted.jsx";
+import {getAuth, signOut } from "firebase/auth";
+import app from "../../../config.firebase.js";
+import {toast} from "react-toastify";
+import Button from "daisyui/components/button/index.js";
 
 const Navbar = () => {
 
@@ -26,6 +32,19 @@ const Navbar = () => {
         </li>
     </>;
 
+    const { user, setUser, isLoading } = use(AuthContext);
+
+    const handleLogout = () => {
+        const auth = getAuth(app);
+        signOut(auth)
+            .then(() => {
+                toast.success("Logout successful");
+                setUser(null);
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    };
 
     return (
         <nav>
@@ -49,7 +68,24 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        isLoading ? <LoaderDotted/> : (
+                        user ?
+                            <>
+                                <Link to="/" title={user.displayName}>
+                                    <img
+                                        src={user.photoURL}
+                                        alt={user.displayName}
+                                        title={user.displayName}
+                                        className="w-10 h-10 border-2 border-amber-500 rounded-full"
+                                    />
+
+                                </Link>
+                                <button onClick={handleLogout} className="btn">Logout</button>
+                            </> : <Link to='/login' className="btn">Login</Link>
+                        )
+                    }
+
                 </div>
             </div>
         </nav>

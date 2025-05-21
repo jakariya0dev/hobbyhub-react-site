@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { toast } from "react-toastify";
 
 export default function GroupCard({ group }) {
   return (
@@ -24,7 +25,20 @@ export default function GroupCard({ group }) {
           <p className="border p-2 rounded text-blue-400">
             <strong>Members:</strong> {group.maxMembers} Max
           </p>
-          <button className="btn btn-primary">Join Group</button>
+          {new Date(group.startDate) > new Date() ? (
+            <button
+              onClick={() => toast.success("Group joined successfully!")}
+              className="btn btn-primary"
+            >
+              Join Group
+            </button>
+          ) : (
+            <p className="border p-2 rounded text-red-400">
+              <button className="btn-primary" disabled>
+                No longer active
+              </button>
+            </p>
+          )}
         </div>
       </div>
     </div>

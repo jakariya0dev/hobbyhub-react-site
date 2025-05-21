@@ -12,7 +12,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-700">
         {/* About */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">HobbyHub</h2>
+          <h2 className="text-xl font-bold mb-4 text-blue-500">
+            Hobby<span className="text-amber-500">Hub</span>
+          </h2>
           <p>
             Discover, join, or create local hobby groups. HobbyHub connects
             people through shared passions—whether it’s painting, hiking,

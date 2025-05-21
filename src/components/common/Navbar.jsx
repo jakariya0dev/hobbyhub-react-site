@@ -1,5 +1,5 @@
 import { getAuth, signOut } from "firebase/auth";
-import { use, useEffect, useState } from "react";
+import { use, useState } from "react";
 import { MdLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
@@ -11,11 +11,6 @@ import LoaderDotted from "./LoaderDotted.jsx";
 
 const Navbar = () => {
   const [themeMode, setThemeMode] = useState("light");
-
-  useEffect(() => {
-    const theme = localStorage.getItem("themeMode") || "light";
-    setThemeMode(theme);
-  }, []);
 
   const toggleTheme = () => {
     const newTheme = themeMode === "light" ? "dark" : "light";

@@ -1,20 +1,28 @@
-
+import { useLoaderData } from "react-router";
 import GroupCard from "../components/group/GroupCard";
-import { useLoaderData } from 'react-router';
+import { Helmet } from "react-helmet";
 
 const GroupsAll = () => {
   const groups = useLoaderData();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-center mb-8">All Hobby Groups</h2>
+    <>
+      <Helmet>
+        <title>HobbyHub | All Hobby Groups</title>
+        <meta name="description" content="all hobby groups" />
+      </Helmet>
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          All Hobby Groups
+        </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {groups.map((group, index) => (
-          <GroupCard key={index} group={group} />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {groups.map((group, index) => (
+            <GroupCard key={index} group={group} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

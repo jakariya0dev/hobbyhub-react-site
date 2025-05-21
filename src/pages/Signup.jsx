@@ -4,14 +4,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
-import app from "../../config.firebase"; // Adjust path if needed
+import app from "../../config.firebase";
 
 const auth = getAuth(app);
 
 const Signup = () => {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,7 +47,7 @@ const Signup = () => {
         email,
         password
       );
-      
+
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photoURL,
@@ -60,65 +60,71 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 mt-12 shadow-xl rounded-xl bg-white">
-      <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="label">Name</label>
-          <input
-            type="text"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="input input-bordered w-full"
-          />
-        </div>
-        <div>
-          <label className="label">Email</label>
-          <input
-            type="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="input input-bordered w-full"
-          />
-        </div>
-        <div>
-          <label className="label">Photo URL</label>
-          <input
-            type="url"
-            name="photoURL"
-            value={formData.photoURL}
-            onChange={handleChange}
-            className="input input-bordered w-full"
-          />
-        </div>
-        <div>
-          <label className="label">Password</label>
-          <input
-            type="password"
-            name="password"
-            required
-            value={formData.password}
-            onChange={handleChange}
-            className="input input-bordered w-full"
-          />
-        </div>
+    <>
+      <Helmet>
+        <title>HobbyHub | Signup</title>
+        <meta name="description" content="Sign up to HobbyHub" />
+      </Helmet>
+      <div className="max-w-md mx-auto p-6 mt-12 shadow-xl rounded-xl bg-white">
+        <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="label">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="label">Photo URL</label>
+            <input
+              type="url"
+              name="photoURL"
+              value={formData.photoURL}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="label">Password</label>
+            <input
+              type="password"
+              name="password"
+              required
+              value={formData.password}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        <button type="submit" className="btn btn-primary w-full mt-4">
-          Register
-        </button>
+          <button type="submit" className="btn btn-primary w-full mt-4">
+            Register
+          </button>
 
-        <p className="text-center mt-2">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
-            Login here
-          </Link>
-        </p>
-      </form>
-    </div>
+          <p className="text-center mt-2">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Login here
+            </Link>
+          </p>
+        </form>
+      </div>
+    </>
   );
 };
 

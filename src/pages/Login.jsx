@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import LoaderBar from "../components/common/LoaderBar.jsx";
 import app from "./../../config.firebase.js";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { user, setUser, isLoading, setIsLoading } = use(AuthContext);
@@ -73,64 +74,70 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Login to HobbyHub
-        </h2>
+    <>
+      <Helmet>
+        <title>HobbyHub | Login</title>
+        <meta name="description" content="Login to HobbyHub" />
+      </Helmet>
+      <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+        <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">
+          <h2 className="text-2xl font-bold text-center mb-6">
+            Login to HobbyHub
+          </h2>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="input input-bordered w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                className="input input-bordered w-full"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-          <div>
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="input input-bordered w-full"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+            <div>
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="••••••••"
+                className="input input-bordered w-full"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
 
-          <button type="submit" className="btn btn-primary w-full">
-            Login
+            <button type="submit" className="btn btn-primary w-full">
+              Login
+            </button>
+          </form>
+
+          <div className="divider">OR</div>
+
+          <button
+            className="btn btn-outline w-full flex items-center justify-center gap-2"
+            onClick={handleGoogleLogin}
+          >
+            <FcGoogle className="text-xl" />
+            Login with Google
           </button>
-        </form>
 
-        <div className="divider">OR</div>
-
-        <button
-          className="btn btn-outline w-full flex items-center justify-center gap-2"
-          onClick={handleGoogleLogin}
-        >
-          <FcGoogle className="text-xl" />
-          Login with Google
-        </button>
-
-        <p className="text-sm text-center mt-4">
-          Don’t have an account?{" "}
-          <Link to="/signup" className="text-blue-600 hover:underline">
-            Sign up
-          </Link>
-        </p>
+          <p className="text-sm text-center mt-4">
+            Don’t have an account?{" "}
+            <Link to="/signup" className="text-blue-600 hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,10 @@
 import { format } from "date-fns";
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 export default function GroupCard({ group }) {
+  const navigate = useNavigate();
+
   return (
     <div className="card bg-base-100 shadow-md">
       <figure>
@@ -21,10 +24,13 @@ export default function GroupCard({ group }) {
           <strong>Start Date:</strong>{" "}
           {format(new Date(group.startDate), "ccc, d MMM, yyyy")}
         </p>
-        <div className="card-actions mt-5 flex-col md:flex-row items-center justify-end">
-          <p className="border p-2 rounded text-blue-400">
-            <strong>Members:</strong> {group.maxMembers} Max
-          </p>
+        <div className="card-actions mt-5 flex-col md:flex-row items-center justify-between">
+          <button
+            onClick={() => navigate(`/group/${group._id}`)}
+            className="btn btn-primary"
+          >
+            View Details
+          </button>
           {new Date(group.startDate) > new Date() ? (
             <button
               onClick={() => toast.success("Group joined successfully!")}

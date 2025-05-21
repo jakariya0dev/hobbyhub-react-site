@@ -1,6 +1,6 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 import GroupCard from "../components/group/GroupCard";
-import { Helmet } from "react-helmet";
 
 const GroupsAll = () => {
   const groups = useLoaderData();

@@ -28,7 +28,7 @@ const Signup = () => {
       navigate("/");
     }
   }, [navigate, user]);
-  
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -82,65 +82,67 @@ const Signup = () => {
         <title>HobbyHub | Signup</title>
         <meta name="description" content="Sign up to HobbyHub" />
       </Helmet>
-      <div className="max-w-md mx-auto p-6 mt-12 shadow-xl rounded-xl bg-white">
-        <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="label">Name</label>
-            <input
-              type="text"
-              name="name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-            />
-          </div>
-          <div>
-            <label className="label">Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-            />
-          </div>
-          <div>
-            <label className="label">Photo URL</label>
-            <input
-              type="url"
-              name="photoURL"
-              value={formData.photoURL}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-            />
-          </div>
-          <div>
-            <label className="label">Password</label>
-            <input
-              type="password"
-              name="password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-            />
-          </div>
+      <section className="w-full min-h-screen p-4">
+        <div className="max-w-md mx-auto p-6 mt-12 shadow-xl rounded-xl bg-base-300">
+          <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="label mb-1">Name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div>
+              <label className="label mb-1">Email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div>
+              <label className="label mb-1">Photo URL</label>
+              <input
+                type="url"
+                name="photoURL"
+                value={formData.photoURL}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div>
+              <label className="label mb-1">Password</label>
+              <input
+                type="password"
+                name="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+            </div>
 
-          <button type="submit" className="btn btn-primary w-full mt-4">
-            Register
-          </button>
+            <button type="submit" className="btn btn-primary w-full mt-4">
+              Register
+            </button>
 
-          <p className="text-center mt-2">
-            Already have an account?{" "}
-            <Link to="/login" className="text-blue-500 hover:underline">
-              Login here
-            </Link>
-          </p>
-        </form>
-      </div>
+            <p className="text-center mt-2">
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-500 hover:underline">
+                Login here
+              </Link>
+            </p>
+          </form>
+        </div>
+      </section>
     </>
   );
 };

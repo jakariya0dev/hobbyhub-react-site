@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import categories from "./../../public/categories.json";
 
 const GroupUpdate = () => {
   const groupData = useLoaderData();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     _id: groupData?._id || "",
@@ -49,6 +50,7 @@ const GroupUpdate = () => {
       .then((data) => {
         console.log("Group updated successfully!", data);
         toast.success("Group updated successfully!");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error("Error updating group:", error);

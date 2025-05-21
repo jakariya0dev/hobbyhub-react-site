@@ -24,7 +24,7 @@ export default function GroupCard({ group }) {
           <strong>Start Date:</strong>{" "}
           {format(new Date(group.startDate), "ccc, d MMM, yyyy")}
         </p>
-        <div className="card-actions mt-5 flex-col md:flex-row items-center justify-between">
+        <div className="card-actions mt-5 items-center justify-between">
           <button
             onClick={() => navigate(`/group/${group._id}`)}
             className="btn btn-accent"

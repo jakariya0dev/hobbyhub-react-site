@@ -5,13 +5,13 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { use, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import LoaderBar from "../components/common/LoaderBar.jsx";
 import app from "./../../config.firebase.js";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
-import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { user, setUser, isLoading, setIsLoading } = use(AuthContext);
@@ -80,14 +80,14 @@ const Login = () => {
         <meta name="description" content="Login to HobbyHub" />
       </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-        <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">
+        <div className="w-full max-w-md bg-base-300 shadow-xl rounded-xl p-8">
           <h2 className="text-2xl font-bold text-center mb-6">
             Login to HobbyHub
           </h2>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="label">
+              <label className="label mb-1">
                 <span className="label-text">Email</span>
               </label>
               <input
@@ -101,7 +101,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="label">
+              <label className="label mb-1">
                 <span className="label-text">Password</span>
               </label>
               <input

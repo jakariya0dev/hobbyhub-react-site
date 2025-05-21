@@ -51,8 +51,8 @@ export default function GroupCreate() {
 
   return (
     <section className="w-full pt-10 min-h-screen p-4">
-      <h2 className="text-center text-xl font-semibold text-gray-700">
-        Update Group Data
+      <h2 className="text-center text-xl font-semibold text-gray-700 mb-5">
+        Create a Hobby Group
       </h2>
       <form
         onSubmit={handleSubmit}

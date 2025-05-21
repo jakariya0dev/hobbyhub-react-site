@@ -38,11 +38,11 @@ const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/groups"),
       },
       {
         path: "/groups",
         element: <GroupsAll />,
+        loader: () => fetch("http://localhost:3000/groups"),
       },
       {
         path: "/group/create",

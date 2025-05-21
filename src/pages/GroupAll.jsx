@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
+
 import GroupCard from "../components/group/GroupCard";
+import { useLoaderData } from 'react-router';
 
 const GroupsAll = () => {
-  const [groups, setGroups] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/groups")
-      .then((response) => response.json())
-      .then((data) => {
-        setGroups(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching groups:", error);
-      });
-  }, []);
+  const groups = useLoaderData();
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">

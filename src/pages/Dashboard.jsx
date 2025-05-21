@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import { toast } from "react-toastify";
+import LoaderBar from "./../components/common/LoaderBar";
+import { AuthContext } from "./../providers/AuthProvider";
 
 export default function Dashboard() {
-  const groups = useLoaderData();
-  const [groupsData, setGroupsData] = useState(groups);
+  const [groupsData, setGroupsData] = useState(null);
+  const { user } = use(AuthContext);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/groups/email/${user.email}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setGroupsData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching groups:", error);
+      });
+  }, [user.email]);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/group/id/${id}`, {
@@ -25,6 +38,20 @@ export default function Dashboard() {
       });
   };
 
+  if (groupsData === null) return <LoaderBar />;
+  if (groupsData.length === 0) {
+    return (
+      <section className="min-h-screen flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold text-center my-5">
+          No Groups Created Yet
+        </h1>
+        <Link to="/group/create">
+          <button className="btn btn-primary">Create a Group</button>
+        </Link>
+      </section>
+    );
+  }
+
   return (
     <section className="max-w-7xl mx-auto pt-10 min-h-screen p-4">
       <h1 className="text-3xl font-bold text-center my-5">Groups Dashboard</h1>
@@ -42,7 +69,7 @@ export default function Dashboard() {
           </thead>
           <tbody>
             {groupsData.map((group, index) => (
-              <tr>
+              <tr key={group._id}>
                 <th>{index + 1}</th>
                 <td>{group.groupName}</td>
                 <td>{group.meetingLocation}</td>

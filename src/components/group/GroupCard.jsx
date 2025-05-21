@@ -16,10 +16,13 @@ export default function GroupCard({ group }) {
         <p>
           <strong>Location:</strong> {group.meetingLocation}
         </p>
+        <p>
+          <strong>Start Date:</strong>{" "}
+          {format(new Date(group.startDate), "ccc, d MMM, yyyy")}
+        </p>
         <div className="card-actions mt-5 flex-col md:flex-row items-center justify-end">
-          <p>
-            <strong>Start Date:</strong>{" "}
-            {format(new Date(group.startDate), "ccc, d MMM, yyyy")}
+          <p className="border p-2 rounded text-blue-400">
+            <strong>Members:</strong> {group.maxMembers} Max
           </p>
           <button className="btn btn-primary">Join Group</button>
         </div>

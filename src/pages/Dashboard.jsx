@@ -4,6 +4,7 @@ import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import LoaderBar from "./../components/common/LoaderBar";
 import { AuthContext } from "./../providers/AuthProvider";
 
@@ -23,20 +24,38 @@ export default function Dashboard() {
   }, [user.email]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/group/id/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedGroups = groupsData.filter((group) => group._id !== id);
-        setGroupsData(updatedGroups);
-        console.log("Group deleted successfully!", data);
-        toast.success("Group deleted successfully!");
-      })
-      .catch((error) => {
-        console.error("Error deleting group:", error);
-        toast.error("Failed to delete group.");
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/group/id/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const updatedGroups = groupsData.filter(
+              (group) => group._id !== id
+            );
+            setGroupsData(updatedGroups);
+            console.log("Group deleted successfully!", data);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your group has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            console.error("Error deleting group:", error);
+            toast.error("Failed to delete group.");
+          });
+      }
+    });
   };
 
   if (groupsData === null) return <LoaderBar />;

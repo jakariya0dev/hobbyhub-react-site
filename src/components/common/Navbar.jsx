@@ -9,25 +9,32 @@ import { AuthContext } from "./../../providers/AuthProvider.jsx";
 import LoaderDotted from "./LoaderDotted.jsx";
 
 const Navbar = () => {
+  
+  const navlinkStyle = ({ isActive }) => {
+    return isActive
+      ? "text-blue-600 font-bold underline underline-offset-6 pb-2 "
+      : "hover:text-blue-500";
+  };
+
   const links = (
     <>
       <li>
-        <Link to="/about" className="hover:text-blue-600">
-          About Us
-        </Link>
+        <NavLink to="/" className={navlinkStyle}>
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/groups" className="hover:text-blue-600">
+        <NavLink to="/groups" className={navlinkStyle}>
           All Groups
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/dashboard" className="hover:text-blue-600">
+        <NavLink to="/dashboard" className={navlinkStyle}>
           My Groups
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/group/create" className="hover:text-blue-600">
+        <NavLink to="/group/create" className={navlinkStyle}>
           Create Group
         </NavLink>
       </li>

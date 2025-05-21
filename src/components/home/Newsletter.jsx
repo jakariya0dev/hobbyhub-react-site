@@ -9,12 +9,12 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="bg-gray-100 py-12 px-4">
+    <div className="py-12 px-4 bg-base-300">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Stay in the Loop
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="mb-6">
           Subscribe to our newsletter to get updates on new hobby groups,
           events, and features.
         </p>

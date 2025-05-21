@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 import { toast } from "react-toastify";
 import categories from "./../../public/categories.json";
-import { Helmet } from "react-helmet";
 
 const GroupUpdate = () => {
   const groupData = useLoaderData();
@@ -63,15 +63,15 @@ const GroupUpdate = () => {
         <meta name="description" content="Update Group" />
       </Helmet>
       <section className="w-full pt-10 min-h-screen p-4">
-        <h2 className="text-center text-xl font-semibold text-gray-700">
+        <h2 className="text-center text-xl font-semibold ">
           Update Group Data
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow space-y-4"
+          className="max-w-2xl mx-auto bg-base-300 p-6 rounded-lg shadow space-y-4"
         >
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Group Name
             </label>
             <input
@@ -86,9 +86,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category
-            </label>
+            <label className="block text-sm font-medium  mb-1">Category</label>
             <select
               name="category"
               value={formData.category}
@@ -108,7 +106,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Description
             </label>
             <textarea
@@ -122,7 +120,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Meeting Location
             </label>
             <input
@@ -137,7 +135,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Max Members
             </label>
             <input
@@ -152,7 +150,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Start Date
             </label>
             <input
@@ -166,9 +164,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Image URL
-            </label>
+            <label className="block text-sm font-medium  mb-1">Image URL</label>
             <input
               type="url"
               name="imageUrl"
@@ -181,9 +177,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              User Name
-            </label>
+            <label className="block text-sm font-medium  mb-1">User Name</label>
             <input
               type="url"
               name="imageUrl"
@@ -196,7 +190,7 @@ const GroupUpdate = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               User Email
             </label>
             <input

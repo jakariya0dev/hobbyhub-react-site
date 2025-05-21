@@ -3,15 +3,19 @@ import {
   getAuth,
   updateProfile,
 } from "firebase/auth";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import app from "../../config.firebase";
+import LoaderBar from "../components/common/LoaderBar";
+import { AuthContext } from "../providers/AuthProvider";
 
 const auth = getAuth(app);
 
 const Signup = () => {
+  const { user, setUser, isLoading, setIsLoading } = use(AuthContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,6 +23,12 @@ const Signup = () => {
     password: "",
   });
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+  
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -32,12 +42,14 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const { name, email, photoURL, password } = formData;
 
     if (!validatePassword(password)) {
       toast.error(
         "Password must have an uppercase, a lowercase letter, and at least 6 characters."
       );
+      setIsLoading(false);
       return;
     }
 
@@ -54,10 +66,15 @@ const Signup = () => {
       });
       toast.success("Registration successful!");
       setFormData({ name: "", email: "", photoURL: "", password: "" });
+      setUser(userCredential.user);
     } catch (error) {
       toast.error(error.message);
     }
   };
+
+  if (isLoading) {
+    return <LoaderBar />;
+  }
 
   return (
     <>

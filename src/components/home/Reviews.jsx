@@ -71,7 +71,7 @@ const ReviewCarousel = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 my-12">
-      <h2 className="text-2xl font-bold text-center mb-8">
+      <h2 className="text-2xl font-bold text-center mb-5">
         What Our Members Say
       </h2>
       <Slider {...settings}>

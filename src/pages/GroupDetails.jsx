@@ -36,21 +36,21 @@ const GroupCard = () => {
         <title>HobbyHub {groupName}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <section>
-        <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl overflow-hidden p-5">
+      <section className="w-full min-h-screen p-5">
+        <div className="bg-base-300 max-w-2xl mx-auto shadow-lg rounded-xl overflow-hidden p-5">
           <img
             src={imageUrl}
             alt={groupName}
             className="w-full h-60 object-cover rounded-md"
           />
           <div className="mt-4 space-y-2">
-            <h2 className="text-2xl font-bold text-gray-800">{groupName}</h2>
+            <h2 className="text-2xl font-bold">{groupName}</h2>
             <p className="text-sm text-blue-600 font-medium">
               {" "}
               Category:
               <span className="font-normal"> {category}</span>{" "}
             </p>
-            <p className="text-gray-600">{description}</p>
+            <p>{description}</p>
 
             <div className="mt-3">
               <p>
@@ -65,10 +65,12 @@ const GroupCard = () => {
             </div>
 
             <div className="mt-4 border-t pt-3">
-              <p className="text-gray-700 text-sm">
+              <p className="text-sm">
                 <strong>Created By:</strong> {userName}
               </p>
-              <p className="text-gray-500 text-sm">{userEmail}</p>
+              <p className="text-sm">
+                <strong>Admin Email:</strong> {userEmail}
+              </p>
             </div>
             <div className="my-4 flex justify-center">
               {new Date(startDate) > new Date() ? (

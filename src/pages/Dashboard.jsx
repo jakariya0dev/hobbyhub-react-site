@@ -83,7 +83,7 @@ export default function Dashboard() {
           Groups Dashboard
         </h1>
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-          <table className="table">
+          <table className="table bg-base-300">
             {/* head */}
             <thead>
               <tr>

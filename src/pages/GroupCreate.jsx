@@ -1,10 +1,9 @@
 import { use, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import categories from "./../../public/categories.json";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
-import { Helmet } from "react-helmet";
-
 
 export default function GroupCreate() {
   const { user } = use(AuthContext);
@@ -58,15 +57,15 @@ export default function GroupCreate() {
         <meta name="description" content="create a hobby group" />
       </Helmet>
       <section className="w-full pt-10 min-h-screen p-4">
-        <h2 className="text-center text-xl font-semibold text-gray-700 mb-5">
+        <h2 className="text-center text-xl font-semibold mb-5">
           Create a Hobby Group
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow space-y-4"
+          className="max-w-2xl mx-auto p-6 rounded-lg shadow-2xl space-y-4 bg-base-300"
         >
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Group Name
             </label>
             <input
@@ -81,9 +80,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category
-            </label>
+            <label className="block text-sm font-medium mb-1">Category</label>
             <select
               name="category"
               value={formData.category}
@@ -103,7 +100,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium mb-1">
               Description
             </label>
             <textarea
@@ -117,7 +114,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Meeting Location
             </label>
             <input
@@ -132,7 +129,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Max Members
             </label>
             <input
@@ -147,7 +144,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               Start Date
             </label>
             <input
@@ -161,9 +158,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Image URL
-            </label>
+            <label className="block text-sm font-medium  mb-1">Image URL</label>
             <input
               type="url"
               name="imageUrl"
@@ -176,9 +171,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              User Name
-            </label>
+            <label className="block text-sm font-medium  mb-1">User Name</label>
             <input
               type="url"
               name="imageUrl"
@@ -190,7 +183,7 @@ export default function GroupCreate() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium  mb-1">
               User Email
             </label>
             <input
@@ -207,7 +200,7 @@ export default function GroupCreate() {
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
-            Update Group
+            Create Group
           </button>
         </form>
       </section>

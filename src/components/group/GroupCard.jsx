@@ -6,7 +6,7 @@ export default function GroupCard({ group }) {
   const navigate = useNavigate();
 
   return (
-    <div className="card bg-base-100 shadow-lg border border-base-content/10">
+    <div className="card bg-base-300 shadow-lg border border-base-content/10">
       <figure>
         <img
           src={group.imageUrl}

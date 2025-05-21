@@ -8,8 +8,8 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 border-t">
-      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-700">
+    <footer className="border-t border-base-content/50">
+      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* About */}
         <div>
           <h2 className="text-xl font-bold mb-4 text-blue-500">
@@ -93,7 +93,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t py-4 text-center text-sm text-gray-500">
+      <div className="py-4 text-center text-sm">
         © {new Date().getFullYear()} HobbyHub. All rights reserved.
       </div>
     </footer>

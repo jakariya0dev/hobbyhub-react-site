@@ -6,7 +6,7 @@ export default function GroupCard({ group }) {
   const navigate = useNavigate();
 
   return (
-    <div className="card bg-base-100 shadow-md">
+    <div className="card bg-base-100 shadow-lg border border-base-content/10">
       <figure>
         <img
           src={group.imageUrl}
@@ -27,7 +27,7 @@ export default function GroupCard({ group }) {
         <div className="card-actions mt-5 flex-col md:flex-row items-center justify-between">
           <button
             onClick={() => navigate(`/group/${group._id}`)}
-            className="btn btn-primary"
+            className="btn btn-accent"
           >
             View Details
           </button>

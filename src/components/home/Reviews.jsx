@@ -10,7 +10,7 @@ const reviews = [
     name: "Emma Watson",
     role: "Book Club Member",
     comment:
-      "HobbyHub helped me find the perfect book club in my area. I've met amazing people and enjoyed some great reads.",
+      "HobbyHub helped me find the perfect book club in my area. I've met amazing people.",
     avatar: "https://randomuser.me/api/portraits/women/1.jpg",
     rating: 5,
   },

@@ -9,7 +9,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="bg-blue-50 py-12 px-4">
+    <div className="bg-gray-100 py-12 px-4">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Stay in the Loop

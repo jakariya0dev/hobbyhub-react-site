@@ -48,7 +48,7 @@ const Sliders = () => {
                 className="w-full h-64 object-cover"
               />
               <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold mb-2">{slide.title}</h3>
+                <h3 className="text-2xl font-semibold mb-2">{slide.title}</h3>
                 <p className="text-gray-600">{slide.description}</p>
               </div>
             </div>

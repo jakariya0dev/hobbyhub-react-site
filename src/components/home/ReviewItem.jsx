@@ -2,8 +2,8 @@ import { FaStar } from "react-icons/fa";
 
 export default function ReviewItem({ review }) {
   return (
-    <div className="px-3">
-      <div className="bg-white p-6 rounded-xl shadow-md h-full flex flex-col items-center text-center">
+    <div className="px-3 my-4">
+      <div className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col items-center text-center">
         <img
           src={review.avatar}
           alt={review.name}

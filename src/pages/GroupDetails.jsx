@@ -1,7 +1,10 @@
-import { useLoaderData } from "react-router";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router";
+import { toast } from "react-toastify";
 
 const GroupCard = () => {
+  const [joinedGroups, setJoinedGroups] = useState([]);
   const groupData = useLoaderData();
   console.log(groupData);
 
@@ -19,6 +22,14 @@ const GroupCard = () => {
     userEmail,
   } = groupData;
 
+  const handleJoinGroup = (id) => {
+    if (joinedGroups.includes(id)) {
+      return toast.error("You have already joined this group!");
+    }
+    const newJoinedGroups = [...joinedGroups, id];
+    setJoinedGroups(newJoinedGroups);
+    toast.success("Group joined successfully!");
+  };
   return (
     <>
       <Helmet>
@@ -34,7 +45,11 @@ const GroupCard = () => {
           />
           <div className="mt-4 space-y-2">
             <h2 className="text-2xl font-bold text-gray-800">{groupName}</h2>
-            <p className="text-sm text-blue-600 font-medium">{category}</p>
+            <p className="text-sm text-blue-600 font-medium">
+              {" "}
+              Category:
+              <span className="font-normal"> {category}</span>{" "}
+            </p>
             <p className="text-gray-600">{description}</p>
 
             <div className="mt-3">
@@ -54,6 +69,24 @@ const GroupCard = () => {
                 <strong>Created By:</strong> {userName}
               </p>
               <p className="text-gray-500 text-sm">{userEmail}</p>
+            </div>
+            <div className="my-4 flex justify-center">
+              {new Date(startDate) > new Date() ? (
+                <button
+                  onClick={() => handleJoinGroup(groupData._id)}
+                  className="btn btn-primary"
+                >
+                  {joinedGroups.includes(groupData._id)
+                    ? "Joined"
+                    : "Join Group"}
+                </button>
+              ) : (
+                <p className="border p-2 rounded text-red-400">
+                  <button className="btn-primary" disabled>
+                    No longer active
+                  </button>
+                </p>
+              )}
             </div>
           </div>
         </div>

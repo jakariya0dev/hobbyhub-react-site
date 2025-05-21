@@ -1,5 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
-import { use } from "react";
+import { use, useEffect, useState } from "react";
+import { MdLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
@@ -9,11 +10,23 @@ import { AuthContext } from "./../../providers/AuthProvider.jsx";
 import LoaderDotted from "./LoaderDotted.jsx";
 
 const Navbar = () => {
-  
+  const [themeMode, setThemeMode] = useState("light");
+
+  useEffect(() => {
+    const theme = localStorage.getItem("themeMode") || "light";
+    setThemeMode(theme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = themeMode === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    setThemeMode(newTheme);
+  };
+
   const navlinkStyle = ({ isActive }) => {
     return isActive
       ? "text-blue-600 font-bold underline underline-offset-6 pb-2 "
-      : "hover:text-blue-500";
+      : "";
   };
 
   const links = (
@@ -56,8 +69,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-base-100 px-4">
-      <div className="navbar bg-base-100 shadow-sm">
+    <nav className="sticky top-0 z-50 bg-base-100">
+      <div className="navbar bg-base-100 shadow-sm px-4">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,7 +90,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-2">
+          <button onClick={toggleTheme} className="btn btn-square btn-circle">
+            {themeMode === "light" ? (
+              <MdOutlineDarkMode className="text-xl" />
+            ) : (
+              <MdLightMode className="text-xl" />
+            )}
+          </button>
           {isLoading ? (
             <LoaderDotted />
           ) : user ? (
@@ -93,6 +113,7 @@ const Navbar = () => {
                 delayHide={100}
                 effect="solid"
               />
+
               <Link id="user-tooltip" to="/" title={user.displayName}>
                 <img
                   src={user.photoURL}

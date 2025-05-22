@@ -2,8 +2,17 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
-export default function GroupCard({ group }) {
+export default function GroupCard({ group, setJoinedGroups, joinedGroups }) {
   const navigate = useNavigate();
+
+  const handleJoinGroup = (groupId) => {
+    if (!joinedGroups.includes(groupId)) {
+      setJoinedGroups((prev) => [...prev, groupId]);
+      toast.success("Group joined successfully!");
+    } else {
+      toast.error("You have already joined.");
+    }
+  };
 
   return (
     <div className="card bg-base-300 shadow-lg border border-base-content/10">
@@ -33,10 +42,10 @@ export default function GroupCard({ group }) {
           </button>
           {new Date(group.startDate) > new Date() ? (
             <button
-              onClick={() => toast.success("Group joined successfully!")}
+              onClick={() => handleJoinGroup(group._id)}
               className="btn btn-primary"
             >
-              Join Group
+              {joinedGroups.includes(group._id) ? "Joined" : "Join"}
             </button>
           ) : (
             <p className="border p-2 rounded text-red-400">

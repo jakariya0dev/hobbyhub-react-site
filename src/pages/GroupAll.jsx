@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 import GroupCard from "../components/group/GroupCard";
 
 const GroupsAll = () => {
   const groups = useLoaderData();
+  const [joinedGroups, setJoinedGroups] = useState([]);
 
   return (
     <>
@@ -18,7 +20,12 @@ const GroupsAll = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {groups.map((group, index) => (
-            <GroupCard key={index} group={group} />
+            <GroupCard
+              key={index}
+              group={group}
+              setJoinedGroups={setJoinedGroups}
+              joinedGroups={joinedGroups}
+            />
           ))}
         </div>
       </div>

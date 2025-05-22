@@ -7,10 +7,10 @@ export default function UpcomingGroups() {
   const [joinedGroups, setJoinedGroups] = useState([]);
 
   let upcomigGroups = groupsData.filter((group) => {
-    const startDate = new Date(group.startDate);
-    const today = new Date();
+    const startDate = new Date(group.startDate).setHours(0, 0, 0, 0);
+    const today = new Date().setHours(0, 0, 0, 0);
 
-    if (startDate > today) {
+    if (startDate >= today) {
       return group;
     }
   });

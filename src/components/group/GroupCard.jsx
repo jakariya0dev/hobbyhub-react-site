@@ -40,7 +40,8 @@ export default function GroupCard({ group, setJoinedGroups, joinedGroups }) {
           >
             View Details
           </button>
-          {new Date(group.startDate) > new Date() ? (
+          {new Date(group.startDate).setHours(0, 0, 0, 0) >=
+          new Date().setHours(0, 0, 0, 0) ? (
             <button
               onClick={() => handleJoinGroup(group._id)}
               className="btn btn-primary"

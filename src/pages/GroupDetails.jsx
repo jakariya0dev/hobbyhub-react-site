@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 import { toast } from "react-toastify";
 
-const GroupDetails= () => {
+const GroupDetails = () => {
   const [joinedGroups, setJoinedGroups] = useState([]);
   const groupData = useLoaderData();
   console.log(groupData);
@@ -74,7 +74,8 @@ const GroupDetails= () => {
               </p>
             </div>
             <div className="my-4 flex justify-center">
-              {new Date(startDate) > new Date() ? (
+              {new Date(startDate).setHours(0, 0, 0, 0) >=
+              new Date().setHours(0, 0, 0, 0) ? (
                 <button
                   onClick={() => handleJoinGroup(groupData._id)}
                   className="btn btn-primary"

@@ -5,6 +5,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { baseUrl } from "../utils/utils";
 import LoaderBar from "./../components/common/LoaderBar";
 import { AuthContext } from "./../providers/AuthProvider";
 
@@ -13,7 +14,7 @@ export default function Dashboard() {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/groups/email/${user.email}`)
+    fetch(`${baseUrl}/groups/email/${user.email}`)
       .then((response) => response.json())
       .then((data) => {
         setGroupsData(data);
@@ -34,7 +35,7 @@ export default function Dashboard() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/group/id/${id}`, {
+        fetch(`${baseUrl}/group/id/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())

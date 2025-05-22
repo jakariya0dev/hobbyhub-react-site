@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 import { toast } from "react-toastify";
 
-const GroupCard = () => {
+const GroupDetails= () => {
   const [joinedGroups, setJoinedGroups] = useState([]);
   const groupData = useLoaderData();
   console.log(groupData);
@@ -30,6 +30,7 @@ const GroupCard = () => {
     setJoinedGroups(newJoinedGroups);
     toast.success("Group joined successfully!");
   };
+
   return (
     <>
       <Helmet>
@@ -97,4 +98,4 @@ const GroupCard = () => {
   );
 };
 
-export default GroupCard;
+export default GroupDetails;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { baseUrl } from "../utils/utils";
 import categories from "./../assets/categories.json";
 
 const GroupUpdate = () => {
@@ -29,7 +30,7 @@ const GroupUpdate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/group/id/${formData._id}`, {
+    fetch(`${baseUrl}/group/id/${formData._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

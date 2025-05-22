@@ -13,6 +13,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import PrivateRoute from "./providers/PrivateRoute.jsx";
+import { baseUrl } from "./utils/utils.js";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/groups"),
+        loader: () => fetch(`${baseUrl}/groups`),
       },
       {
         path: "/login",
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/groups",
         element: <GroupsAll />,
-        loader: () => fetch("http://localhost:3000/groups"),
+        loader: () => fetch(`${baseUrl}/groups`),
       },
       {
         path: "/group/create",
@@ -56,8 +57,7 @@ const router = createBrowserRouter([
       {
         path: "/group/:id",
         element: <GroupDetails />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/group/id/${params.id}`),
+        loader: ({ params }) => fetch(`${baseUrl}/group/id/${params.id}`),
       },
       {
         path: "/group/:id/edit",
@@ -66,8 +66,7 @@ const router = createBrowserRouter([
             <GroupUpdate />
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/group/id/${params.id}`),
+        loader: ({ params }) => fetch(`${baseUrl}/group/id/${params.id}`),
       },
       {},
     ],

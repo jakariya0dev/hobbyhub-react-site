@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import categories from "./../assets/categories.json";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
+import { baseUrl } from "../utils/utils";
 
 export default function GroupCreate() {
   const { user } = use(AuthContext);
@@ -31,7 +32,7 @@ export default function GroupCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/group/create", {
+    fetch(`${baseUrl}/group/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

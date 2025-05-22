@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router";
 import GroupCard from "../group/GroupCard";
-import { useState } from "react";
 
 export default function UpcomingGroups() {
   const groupsData = useLoaderData();
   const [joinedGroups, setJoinedGroups] = useState([]);
 
-  const upcomigGroups = groupsData.filter((group, index) => {
+  let upcomigGroups = groupsData.filter((group) => {
     const startDate = new Date(group.startDate);
     const today = new Date();
 
     if (startDate > today) {
-      return index < 5;
+      return group;
     }
   });
+
+  upcomigGroups = upcomigGroups.slice(0, 6);
+
   return (
     <section>
       <h2 className="text-2xl font-bold text-center mb-6">

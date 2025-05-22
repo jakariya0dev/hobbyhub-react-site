@@ -2,7 +2,7 @@ import { use, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import categories from "./../../public/categories.json";
+import categories from "./../assets/categories.json";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
 
 export default function GroupCreate() {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import categories from "./../../public/categories.json";
+import categories from "./../assets/categories.json";
 
 const GroupUpdate = () => {
   const groupData = useLoaderData();

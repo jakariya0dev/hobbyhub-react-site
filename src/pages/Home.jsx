@@ -4,6 +4,7 @@ import Reviews from "../components/home/Reviews.jsx";
 import Sliders from "../components/home/Sliders.jsx";
 import UpcomingGroups from "../components/home/UpcomingGroups.jsx";
 
+
 const Home = () => {
   return (
     <>

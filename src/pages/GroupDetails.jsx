@@ -6,9 +6,7 @@ import { toast } from "react-toastify";
 const GroupDetails = () => {
   const [joinedGroups, setJoinedGroups] = useState([]);
   const groupData = useLoaderData();
-  console.log(groupData);
-
-  //   if (!group) return null;
+  // console.log(groupData);
 
   const {
     groupName,

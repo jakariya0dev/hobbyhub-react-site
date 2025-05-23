@@ -5,7 +5,16 @@ import GroupCard from "../components/group/GroupCard";
 
 const GroupsAll = () => {
   const groups = useLoaderData();
+  // const groups = [];
   const [joinedGroups, setJoinedGroups] = useState([]);
+
+  if (!groups || groups.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <h2 className="text-3xl font-bold text-center mb-8">No groups found</h2>
+      </div>
+    );
+  }
 
   return (
     <>

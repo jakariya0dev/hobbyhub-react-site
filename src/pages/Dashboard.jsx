@@ -60,6 +60,7 @@ export default function Dashboard() {
   };
 
   if (groupsData === null) return <LoaderBar />;
+
   if (groupsData.length === 0) {
     return (
       <section className="min-h-screen flex flex-col items-center justify-center">

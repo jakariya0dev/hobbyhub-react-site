@@ -2,9 +2,9 @@ import { use, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { baseUrl } from "../utils/utils";
 import categories from "./../assets/categories.json";
 import { AuthContext } from "./../providers/AuthProvider.jsx";
-import { baseUrl } from "../utils/utils";
 
 export default function GroupCreate() {
   const { user } = use(AuthContext);
@@ -20,8 +20,6 @@ export default function GroupCreate() {
     userName: user?.displayName,
     userEmail: user?.email,
   });
-
-  console.log(formData);
 
   const navigate = useNavigate();
 

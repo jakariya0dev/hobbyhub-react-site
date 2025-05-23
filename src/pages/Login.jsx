@@ -33,7 +33,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User signed in successfully:", user);
+        // console.log("User signed in successfully:", user);
         toast.success("Login successful!");
         setUser(user);
         setIsLoading(false);
@@ -54,17 +54,14 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
 
-        console.log(
-          "User signed in with Google, returning token and profile:",
-          user
-        );
+        // console.log("User signed in with Google", user);
         toast.success("Login successful!");
         setUser(user);
         setIsLoading(false);
       })
       .catch((error) => {
         setIsLoading(false);
-        console.log("Error code:", error.code);
+        // console.log("Error code:", error.code);
         toast.error(error.message);
       });
   };

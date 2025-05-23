@@ -49,7 +49,7 @@ const GroupUpdate = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Group updated successfully!", data);
+        // console.log("Group updated successfully!", data);
         toast.success("Group updated successfully!");
         navigate("/dashboard");
       })

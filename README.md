@@ -1,6 +1,6 @@
 # 🎨 HobbyHub - A Local Hobby Group Organizer
 
-**Live Site:** [https://your-live-site-url.com](https://your-live-site-url.com)  
+**Live Site:** [https://hobby-hub-papaya.web.app/](https://hobby-hub-papaya.web.app/)  
 **Client Repo:**  
 **Server Repo:**
 

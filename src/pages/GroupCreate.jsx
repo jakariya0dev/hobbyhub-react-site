@@ -39,7 +39,7 @@ export default function GroupCreate() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Group created successfully!", data);
+        // console.log("Group created successfully!", data);
         navigate("/dashboard");
         toast.success("Group created successfully!");
       })

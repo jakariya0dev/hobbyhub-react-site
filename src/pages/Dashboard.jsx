@@ -44,7 +44,7 @@ export default function Dashboard() {
               (group) => group._id !== id
             );
             setGroupsData(updatedGroups);
-            console.log("Group deleted successfully!", data);
+            // console.log("Group deleted successfully!", data);
             Swal.fire({
               title: "Deleted!",
               text: "Your group has been deleted.",

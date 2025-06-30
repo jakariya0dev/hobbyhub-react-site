@@ -13,7 +13,7 @@ const BlogSection = () => {
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
+              className="bg-base-300 shadow-md rounded-lg overflow-hidden"
             >
               <img
                 src={post.image}
@@ -22,20 +22,20 @@ const BlogSection = () => {
               />
               <div className="p-5 space-y-3">
                 <h2 className="text-xl font-semibold">{post.title}</h2>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm">
                   By {post.author} | {new Date(post.date).toLocaleDateString()}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full"
+                      className="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full"
                     >
                       #{tag}
                     </span>
                   ))}
                 </div>
-                <p className="text-gray-700">{post.excerpt}</p>
+                <p className="">{post.excerpt}</p>
                 <Link
                   to={`/blogs/${post.slug}`}
                   className="text-blue-600 hover:underline font-medium inline-block"

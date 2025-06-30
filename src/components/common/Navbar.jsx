@@ -10,7 +10,7 @@ import { AuthContext } from "./../../providers/AuthProvider.jsx";
 import LoaderDotted from "./LoaderDotted.jsx";
 
 const Navbar = () => {
-  const [themeMode, setThemeMode] = useState("dark");
+  const [themeMode, setThemeMode] = useState("light");
   const { user, setUser, isLoading } = use(AuthContext);
 
   const toggleTheme = () => {

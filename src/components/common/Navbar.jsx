@@ -10,7 +10,8 @@ import { AuthContext } from "./../../providers/AuthProvider.jsx";
 import LoaderDotted from "./LoaderDotted.jsx";
 
 const Navbar = () => {
-  const [themeMode, setThemeMode] = useState("light");
+  const [themeMode, setThemeMode] = useState("dark");
+  const { user, setUser, isLoading } = use(AuthContext);
 
   const toggleTheme = () => {
     const newTheme = themeMode === "light" ? "dark" : "light";
@@ -36,20 +37,26 @@ const Navbar = () => {
           All Groups
         </NavLink>
       </li>
+
       <li>
-        <NavLink to="/dashboard" className={navlinkStyle}>
-          My Groups
+        <NavLink to="/about" className={navlinkStyle}>
+          About Us
         </NavLink>
       </li>
       <li>
-        <NavLink to="/group/create" className={navlinkStyle}>
-          Create Group
+        <NavLink to="/contact" className={navlinkStyle}>
+          Contact Us
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard" className={navlinkStyle}>
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
-
-  const { user, setUser, isLoading } = use(AuthContext);
 
   const handleLogout = () => {
     const auth = getAuth(app);

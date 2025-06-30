@@ -1,8 +1,12 @@
 // src/router.jsx
 import { Suspense } from "react";
 import { createBrowserRouter } from "react-router";
+import Blog from "../pages/Blog";
+import BlogDetails from "../pages/BlogDetails";
+import Contact from "../pages/Contact";
 import App from "./../App";
 import LoaderBar from "./../components/common/LoaderBar";
+import About from "./../pages/About";
 import Dashboard from "./../pages/Dashboard";
 import ErrorPage from "./../pages/ErrorPage";
 import GroupsAll from "./../pages/GroupAll";
@@ -28,8 +32,6 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         loader: () => fetch(`${baseUrl}/groups`),
-        
-    
       },
       {
         path: "/login",
@@ -73,6 +75,22 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`${baseUrl}/group/id/${params.id}`),
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
+      },
+      {
+        path: "/blogs/:slug",
+        element: <BlogDetails />,
       },
     ],
   },

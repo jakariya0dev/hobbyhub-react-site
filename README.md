@@ -1,8 +1,7 @@
 # 🎨 HobbyHub - A Local Hobby Group Organizer
 
 **Live Site:** [https://hobby-hub-papaya.web.app/](https://hobby-hub-papaya.web.app/)  
-**Client Repo:**  
-**Server Repo:**
+**Server Repo:** [https://github.com/jakariya0dev/hobbyhub-react-site-server](https://github.com/jakariya0dev/hobbyhub-react-site-server) 
 
 ## 📌 Project Overview
 
